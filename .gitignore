@@ -34,3 +34,17 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# Komodo Edit
+*.komodoproject
+.komodotools
+
+# Buildozer
+.buildozer
+
+# Virtualenv
+venv
+
+# Vim
+*.swp
+*~

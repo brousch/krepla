@@ -1,0 +1,86 @@
+#:kivy 1.8.0
+
+#:set padding_base "8sp"
+
+<HistoryInput@BoxLayout>
+    height: input_label.height
+    orientation: 'horizontal'
+    size_hint: 1, None
+    line_num: "0"
+    input_text: "???"
+    Button:
+        halign: 'right'
+        size_hint: None, 1
+        text: root.line_num
+        text_size: self.width - sp(8), None
+        width: sp(40)
+    Label:
+        id: input_label
+        height: self.texture_size[1] + sp(8)
+        size_hint: 1, None
+        text: root.input_text
+        text_size: self.width, None
+    Button:
+        text: 'R'
+        size_hint: None, 1
+        width: self.texture_size[0]
+
+<HistoryOutput@BoxLayout>
+    height: output_label.height
+    orientation: 'horizontal'
+    size_hint: 1, None
+    line_num: "0"
+    output_text: "???"
+    Button:
+        halign: 'right'
+        size_hint: None, 1
+        text: root.line_num
+        text_size: self.width - sp(8), None
+        width: sp(40)
+    Label:
+        height: self.texture_size[1] + sp(8)
+        id: output_label
+        size_hint: 1, None
+        text: root.output_text
+        text_size: self.size[0], None
+
+<Krepla>:
+    orientation: 'vertical'
+    padding: padding_base, padding_base
+    ActionBar:
+        id: action_bar
+        ActionView:
+            use_separator: True
+            ActionPrevious:
+                title: 'PAKIFA'
+                with_previous: False
+            ActionOverflow:
+            ActionGroup:
+                text: 'File'
+                ActionButton:
+                    text: 'Save'
+                ActionButton:
+                    text: 'Open'
+                ActionButton:
+                    text: 'Quit'
+    HistoryInput:
+        line_num: "1"
+        input_text: "This is the first line of input."
+    HistoryOutput:
+        line_num: "2"
+        output_text: "This is the first line of output."
+    HistoryInput:
+        line_num: "3"
+        input_text: "This is a really long \n input line."
+    HistoryOutput:
+        line_num: "400"
+        output_text: "This is a really \n long output line."
+    BoxLayout:
+        orientation: 'horizontal'
+        TextInput:
+            id: main_input
+            multiline: False
+        Button:
+            size_hint: None, 1
+            text: "Enter"
+            width: self.texture_size[0] + (2 * root.padding[0])
