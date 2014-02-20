@@ -1,4 +1,4 @@
-PAKIFA - Python And Kivy Interpreter For Android
-================================================
+KREPLA - Kivy REPL for Android
+==============================
 
-A Python interpreter for Android created using Kivy.
+A Python REPL for Android created using Kivy.
