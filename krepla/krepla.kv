@@ -46,6 +46,7 @@
         text_size: self.size[0], None
 
 <Krepla>:
+    io_history: io_history
     orientation: 'vertical'
     padding: sp(padding_base), sp(padding_base)
     ActionBar:
@@ -66,33 +67,10 @@
                     text: 'Quit'
     ScrollView:
         BoxLayout:
-            height: sum([c.height for c in self.children])
+            height: sum([c.height for c in self.children]) + (2 * sp(padding_base))
+            id: io_history
             orientation: 'vertical'
             size_hint: 1, None
-            HistoryInput:
-                line_num: "1"
-                input_text: "This is the first line of input."
-            HistoryOutput:
-                line_num: "2"
-                output_text: "This is the first line of output."
-            HistoryInput:
-                line_num: "3"
-                input_text: "This is a really long \n input line."
-            HistoryOutput:
-                line_num: "4"
-                output_text: "This is a really \n long output line."
-            HistoryInput:
-                line_num: "5"
-                input_text: "This is the first line of input."
-            HistoryOutput:
-                line_num: "6"
-                output_text: "This is the first line of output."
-            HistoryInput:
-                line_num: "7"
-                input_text: "This is a really long \n input line."
-            HistoryOutput:
-                line_num: "800"
-                output_text: "This is a really \n long output line."
     BoxLayout:
         height: prompt_label.height
         orientation: 'horizontal'
@@ -104,10 +82,10 @@
             text: ">>>"
             width: sp(sm_button_width)
         TextInput:
-            height: 
-            id: main_input.height
+            id: main_input
             multiline: False
         Button:
+            on_press: root.run_input(main_input.text)
             size_hint: None, 1
             text: "Enter"
             width: self.texture_size[0] + (2 * sp(padding_base))
