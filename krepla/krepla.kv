@@ -11,7 +11,7 @@
     input_text: "???"
     Button:
         halign: 'right'
-        on_press: root.collapse_row(input_label)
+        on_press: root.collapse_row(app, input_label)
         size_hint: None, 1
         text: root.line_num
         text_size: self.width - sp(padding_base), None
@@ -35,6 +35,7 @@
     output_text: "???"
     Button:
         halign: 'right'
+        on_press: root.collapse_row(app, output_label)
         size_hint: None, 1
         text: root.line_num
         text_size: self.width - sp(padding_base), None
