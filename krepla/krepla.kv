@@ -11,6 +11,7 @@
     input_text: "???"
     Button:
         halign: 'right'
+        on_press: root.collapse_row(input_label)
         size_hint: None, 1
         text: root.line_num
         text_size: self.width - sp(padding_base), None
@@ -72,11 +73,10 @@
             orientation: 'vertical'
             size_hint: 1, None
     BoxLayout:
-        height: prompt_label.height
+        height: sp(32)
         orientation: 'horizontal'
         size_hint: 1, None
         Label:
-            height: self.texture_size[1] + sp(padding_base)
             id: prompt_label
             size_hint: None, 1
             text: ">>>"
