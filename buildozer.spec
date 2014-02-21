@@ -1,16 +1,16 @@
 [app]
 
 # (str) Title of your application
-title = PAKIFA
+title = KREPLA
 
 # (str) Package name
-package.name = pakifa
+package.name = krepla
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = com.feralrooster
 
 # (str) Source code where the main.py live
-source.dir = ./pakifa
+source.dir = ./krepla
 
 # (list) Source files to include (let empty to include all the files)
 source.include_exts = py,png,jpg,kv,atlas
