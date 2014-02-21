@@ -1,6 +1,7 @@
 #:kivy 1.8.0
 
-#:set padding_base "8sp"
+#:set padding_base 8
+#:set sm_button_width 36
 
 <HistoryInput@BoxLayout>
     height: input_label.height
@@ -12,18 +13,18 @@
         halign: 'right'
         size_hint: None, 1
         text: root.line_num
-        text_size: self.width - sp(8), None
-        width: sp(40)
+        text_size: self.width - sp(padding_base), None
+        width: sp(sm_button_width)
     Label:
         id: input_label
-        height: self.texture_size[1] + sp(8)
+        height: self.texture_size[1] + sp(padding_base)
         size_hint: 1, None
         text: root.input_text
         text_size: self.width, None
     Button:
         text: 'R'
         size_hint: None, 1
-        width: sp(40)
+        width: sp(sm_button_width)
 
 <HistoryOutput@BoxLayout>
     height: output_label.height
@@ -35,10 +36,10 @@
         halign: 'right'
         size_hint: None, 1
         text: root.line_num
-        text_size: self.width - sp(8), None
-        width: sp(40)
+        text_size: self.width - sp(padding_base), None
+        width: sp(sm_button_width)
     Label:
-        height: self.texture_size[1] + sp(8)
+        height: self.texture_size[1] + sp(padding_base)
         id: output_label
         size_hint: 1, None
         text: root.output_text
@@ -46,7 +47,7 @@
 
 <Krepla>:
     orientation: 'vertical'
-    padding: padding_base, padding_base
+    padding: sp(padding_base), sp(padding_base)
     ActionBar:
         id: action_bar
         ActionView:
@@ -63,24 +64,38 @@
                     text: 'Open'
                 ActionButton:
                     text: 'Quit'
-    HistoryInput:
-        line_num: "1"
-        input_text: "This is the first line of input."
-    HistoryOutput:
-        line_num: "2"
-        output_text: "This is the first line of output."
-    HistoryInput:
-        line_num: "3"
-        input_text: "This is a really long \n input line."
-    HistoryOutput:
-        line_num: "400"
-        output_text: "This is a really \n long output line."
+    ScrollView:
+        BoxLayout:
+            minimum_height: sum([child.height for child in self.children])
+            orientation: 'vertical'
+            size_hint: 1, None
+            HistoryInput:
+                line_num: "1"
+                input_text: "This is the first line of input."
+            HistoryOutput:
+                line_num: "2"
+                output_text: "This is the first line of output."
+            HistoryInput:
+                line_num: "3"
+                input_text: "This is a really long \n input line."
+            HistoryOutput:
+                line_num: "400"
+                output_text: "This is a really \n long output line."
     BoxLayout:
+        height: prompt_label.height
         orientation: 'horizontal'
+        size_hint: 1, None
+        Label:
+            height: self.texture_size[1] + sp(padding_base)
+            id: prompt_label
+            size_hint: None, 1
+            text: ">>>"
+            width: sp(sm_button_width)
         TextInput:
-            id: main_input
+            height: 
+            id: main_input.height
             multiline: False
         Button:
             size_hint: None, 1
             text: "Enter"
-            width: self.texture_size[0] + (2 * root.padding[0])
+            width: self.texture_size[0] + (2 * sp(padding_base))
