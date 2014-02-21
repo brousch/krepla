@@ -66,7 +66,7 @@
                     text: 'Quit'
     ScrollView:
         BoxLayout:
-            minimum_height: sum([child.height for child in self.children])
+            height: sum([c.height for c in self.children])
             orientation: 'vertical'
             size_hint: 1, None
             HistoryInput:
@@ -79,7 +79,19 @@
                 line_num: "3"
                 input_text: "This is a really long \n input line."
             HistoryOutput:
-                line_num: "400"
+                line_num: "4"
+                output_text: "This is a really \n long output line."
+            HistoryInput:
+                line_num: "5"
+                input_text: "This is the first line of input."
+            HistoryOutput:
+                line_num: "6"
+                output_text: "This is the first line of output."
+            HistoryInput:
+                line_num: "7"
+                input_text: "This is a really long \n input line."
+            HistoryOutput:
+                line_num: "800"
                 output_text: "This is a really \n long output line."
     BoxLayout:
         height: prompt_label.height
